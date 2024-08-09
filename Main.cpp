@@ -39,6 +39,21 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+
+            if (event.type == sf::Event::KeyPressed) {
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+                    playerPos.y++;
+                }
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+                    playerPos.y--;
+                }
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+                    playerPos.x++;
+                }
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+                    playerPos.x--;
+                }
+            }
         }
 
         window.clear(Color::Red);
@@ -63,6 +78,11 @@ int main()
 
                 tile.setOutlineColor(Color::White);
                 tile.setOutlineThickness(2);
+
+                if (playerPos.x < 0) playerPos.x = 0;
+                if (playerPos.x >= mapSize.x) playerPos.x = mapSize.x - 1;
+                if (playerPos.y < 0) playerPos.y = 0;
+                if (playerPos.y >= mapSize.y) playerPos.y = mapSize.y - 1;
 
                 window.draw(tile);
             }
