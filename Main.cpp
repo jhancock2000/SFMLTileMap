@@ -41,19 +41,24 @@ int main()
                 window.close();
 
             if (event.type == sf::Event::KeyPressed) {
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+                switch (event.key.code) {
+                case sf::Keyboard::D:
                     playerPos.y++;
-                }
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+                    break;
+                case sf::Keyboard::A:
                     playerPos.y--;
-                }
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+                    break;
+                case sf::Keyboard::S:
                     playerPos.x++;
-                }
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+                    break;
+                case sf::Keyboard::W:
                     playerPos.x--;
+                    break;
+                default:
+                    break;
                 }
             }
+
         }
 
         window.clear(Color::Red);
